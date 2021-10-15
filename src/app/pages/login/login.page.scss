@@ -1,0 +1,45 @@
+.userLoginContainer{
+  width: 75%;
+  margin: auto auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 100%;
+  align-content: center;
+}
+
+
+.ionItemInput{
+  border: 1px solid #CCC;
+  border-radius: 25px;
+  margin: 10px 0px;
+  flex: 0 0 100%;
+  --min-height: 0px;
+  max-height: 40px;
+  height: 40px;
+}
+
+ion-avatar{
+  width: 100px;
+  height: 100px;
+  margin-bottom: 30px;
+}
+
+ion-input{
+  text-align: center;
+  min-height: 40px!important;
+
+}
+
+.loginButton{
+  flex: 0 0 100%;
+  margin: 10px 0px;
+  text-transform: capitalize;
+  // font-weight: bold;
+  font-size: 16px;
+}
+
+.labelForgotPassword{
+  position: absolute;
+  bottom:20px;
+}
