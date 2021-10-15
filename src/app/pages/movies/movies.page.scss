@@ -1,0 +1,50 @@
+.ionItemMovie{
+    border-radius: 15px;
+    margin: 15px 0;
+    .movieImageContainer{
+      width: 50%;
+      height: 130px;
+    }
+    .movieContainer{
+      display: flex;
+      border-radius: 15px;
+      --inner-padding-end: 0px;
+      --inner-padding-start: 0px;
+      --padding-start: 0px;
+
+        .movieDescription{
+        background-color: #afafaf;
+        color: #000;
+        text-align: center;
+        width: 50%;
+        height: 100%;
+        p{
+          font-size: 12px;
+        }
+      }
+    .movieImage{
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+ion-item-options{
+  background: #259f88;
+}
+ion-item-option{
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+ion-content{
+  --padding-start: 15px;
+  --padding-end: 15px;
+}
+
+ion-icon{
+  font-size: 40px;
+}
+
+
+

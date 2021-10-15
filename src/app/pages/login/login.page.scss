@@ -19,6 +19,14 @@
   height: 40px;
 }
 
+.formContainer{
+  height: 100%;
+}
+
+.formError{
+  border: 1px solid red;
+}
+
 ion-avatar{
   width: 100px;
   height: 100px;

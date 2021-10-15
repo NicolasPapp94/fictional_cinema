@@ -1,18 +1,22 @@
 <ion-content>
-  <div class="userLoginContainer">
-    <ion-avatar>
-      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-    </ion-avatar>
-    <ion-item class="ionItemInput" lines="none">
-      <ion-input placeholder="Username"></ion-input>
-      <ion-icon></ion-icon>
-    </ion-item>
-    <ion-item class="ionItemInput" lines="none">
-      <ion-input placeholder="Password"></ion-input>
-      <ion-icon name="eye-outline"></ion-icon>
-    </ion-item>
-    <ion-button class="loginButton" shape="round" color="favorite" fill="solid">Login</ion-button>
-    <span class="labelCreateAccount">Create account</span>
-    <span class="labelForgotPassword">Forgot password?</span>
-  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate class="formContainer">
+    <div class="userLoginContainer">
+      <ion-avatar>
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      </ion-avatar>
+      <ion-item class="ionItemInput" lines="none"
+        [ngClass]="submitted && errorCtr.username.errors?.required ? 'formError' : ''">
+        <ion-input placeholder="Username" formControlName="username"></ion-input>
+        <ion-icon></ion-icon>
+      </ion-item>
+      <ion-item class="ionItemInput" lines="none"
+        [ngClass]="submitted && errorCtr.password.errors?.required ? 'formError' : ''">
+        <ion-input placeholder="Password" formControlName="password"></ion-input>
+        <ion-icon name="eye-outline"></ion-icon>
+      </ion-item>
+      <ion-button type="submit" class="loginButton" shape="round" color="favorite" fill="solid">Login</ion-button>
+      <span class="labelCreateAccount">Create account</span>
+      <span class="labelForgotPassword">Forgot password?</span>
+    </div>
+  </form>
 </ion-content>
