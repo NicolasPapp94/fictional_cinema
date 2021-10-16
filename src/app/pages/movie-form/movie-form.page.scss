@@ -1,0 +1,25 @@
+.section-star{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px
+}
+
+.ionItemInput{
+  border-radius: 25px;
+  margin: 10px 0px;
+  flex: 0 0 100%;
+  --min-height: 0px;
+  max-height: 40px;
+  height: 40px;
+}
+
+
+.ionItemTextArea{
+  border-radius: 25px;
+  margin: 10px 0px;
+  flex: 0 0 100%;
+}
+
+.saveMovie{
+  float: right;
+}

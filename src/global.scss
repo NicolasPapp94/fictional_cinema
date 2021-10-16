@@ -24,6 +24,9 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+@import '~ngx-bar-rating/themes/br-default-theme';
+@import '~ngx-bar-rating/themes/br-movie-theme';
+@import '~ngx-bar-rating/themes/br-stars-theme';
 
 :root{
   --ion-color-favorite: #686868;
@@ -32,8 +35,6 @@
   --ion-color-favorite-contrast-rgb: 255,255,255;
   --ion-color-favorite-shade: #5ca56c;
   --ion-color-favorite-tint: #78c288;
-
-
 }
 
 .ion-color-favorite {
@@ -51,6 +52,29 @@
   --background: #ff3737;
 }
 
+.headerIcon{
+  --color:#FFF;
+  padding: 0px 10px!important;
+}
+ .br-text{
+  text-align: left;
+  margin-top:10px
+}
 ion-toolbar, ion-content{
   --background: #000
+}
+
+ion-content{
+  --padding-start: 15px;
+  --padding-end: 15px;
+}
+
+// SETTING DEFAULT FONT
+@font-face {
+  font-family: "Nunito Regular";
+  src: url("./assets/fonts/Nunito-Regular.ttf");
+}
+
+*{
+  font-family: "Nunito Regular";
 }

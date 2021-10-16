@@ -3,7 +3,7 @@
     margin: 15px 0;
     .movieImageContainer{
       width: 50%;
-      height: 130px;
+      height: 150px;
     }
     .movieContainer{
       display: flex;
@@ -18,9 +18,30 @@
         text-align: center;
         width: 50%;
         height: 100%;
+
         p{
           font-size: 12px;
+          text-overflow: ellipsis;
+          white-space: break-spaces;
+          word-wrap: break-word;
+          overflow: hidden;
+          height:50px;
+          padding: 0px 30px;
+          margin: 0px;
         }
+        .rateSpan{
+          font-size: 12px;
+        }
+        .movieRate{
+          float: left;
+          text-align: left;
+          padding-left: 10px;
+          .starIcon{
+            font-size: 14px;
+            fill: yellow
+          }
+        }
+
       }
     .movieImage{
       height: 100%;
@@ -35,11 +56,6 @@ ion-item-options{
 ion-item-option{
   font-size: 18px;
   text-transform: capitalize;
-}
-
-ion-content{
-  --padding-start: 15px;
-  --padding-end: 15px;
 }
 
 ion-icon{

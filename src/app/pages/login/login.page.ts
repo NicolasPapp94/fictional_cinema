@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
 @Component({
   selector: 'app-login',
@@ -14,9 +15,10 @@ export class LoginPage implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private _toastService: ToastService,
-    private router: Router
+    private router: Router,
+    private menu: MenuController
   ) {
-
+    this.menu.enable(false)
 
   }
 

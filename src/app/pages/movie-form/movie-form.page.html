@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="headerIcon" mode="ios" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title> Add Movie</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="movieForm" (ngSubmit)="onSubmit()" novalidate class="formContainer">
+    <div class="userLoginContainer">
+      <ion-item class="ionItemInput" lines="none"
+        [ngClass]="submitted && errorCtr.movieName.errors?.required ? 'formError' : ''">
+        <ion-input placeholder="Movie name" formControlName="movieName"></ion-input>
+      </ion-item>
+      <ion-item class="ionItemInput" lines="none"
+        [ngClass]="submitted && errorCtr.movieDate.errors?.required ? 'formError' : ''">
+        <ion-input placeholder="Movie date" formControlName="movieDate"></ion-input>
+      </ion-item>
+      <ion-item class="ionItemTextArea" lines="none"
+        [ngClass]="submitted && errorCtr.movieDescription.errors?.required ? 'formError' : ''">
+        <ion-textarea placeholder="Movie description" formControlName="movieDescription"></ion-textarea>
+      </ion-item>
+      <section class="section-star">
+        <span>Movie Rating</span>
+        <bar-rating [(rate)]="rate" [max]="5" [theme]="'stars'" [showText]="true"
+          [titles]="['Bad', 'Mediocre' , 'Ok' ,'Good', 'Awesome']" formControlName="movieRating">
+        </bar-rating>
+      </section>
+    </div>
+    <ion-button class="saveMovie" type="submit" shape="round" color="primary" fill="solid">Save</ion-button>
+  </form>
+</ion-content>

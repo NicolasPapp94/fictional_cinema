@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: MoviesPage
+  },
+  {
+    path: 'movie-detail',
+    loadChildren: () => import('../movie-detail/movie-detail.module').then(m => m.MovieDetailPageModule)
+  },
+  {
+    path: 'movie-form',
+    loadChildren: () => import('../movie-form/movie-form.module').then(m => m.MovieFormPageModule)
   }
 ];
 
@@ -14,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MoviesPageRoutingModule {}
+export class MoviesPageRoutingModule { }
