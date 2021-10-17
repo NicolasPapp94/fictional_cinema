@@ -11,28 +11,24 @@
 </ion-header>
 
 <ion-content>
-  <ion-item-sliding class="ionItemMovie">
+  <ion-item-sliding class="ionItemMovie" *ngFor="let movie of arrayMovies">
     <ion-item class="movieContainer">
       <div class="movieImageContainer">
-        <img src="assets/images/avengersMovie.jpg" class="movieImage"><img>
+        <!-- <img src="assets/images/avengersMovie.jpg" class="movieImage"><img> -->
       </div>
       <div class="movieDescription">
-        <h5>The Avengers</h5>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias enim dolorem,?</p>
+        <h5>{{ movie.movieName }}</h5>
+        <p>{{ movie.movieDescription }}</p>
         <div class="movieRate">
           <span class="rateSpan">Rate</span>
           <div class="stars">
-            <ion-icon name="star-outline" class="starIcon"></ion-icon>
-            <ion-icon name="star-outline" class="starIcon"></ion-icon>
-            <ion-icon name="star-outline" class="starIcon"></ion-icon>
-            <ion-icon name="star-outline" class="starIcon"></ion-icon>
-            <ion-icon name="star-outline" class="starIcon"></ion-icon>
+            <ion-icon [name]="star" class="starIcon" *ngFor="let star of movie.movieStars"></ion-icon>
           </div>
         </div>
       </div>
     </ion-item>
     <ion-item-options side="end">
-      <ion-item-option color="tertiary" expandable (click)="showDetail()">
+      <ion-item-option color="tertiary" expandable (click)="showDetail(movie.id)">
         Edit
       </ion-item-option>
     </ion-item-options>

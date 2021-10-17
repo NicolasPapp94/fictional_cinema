@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 @Component({
   selector: 'app-login',
@@ -11,12 +13,15 @@ import { ToastService } from 'src/app/services/toast.service';
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
   submitted = false;
-
+  cinemaImage = "assets/images/noImage.png";
 
   constructor(private formBuilder: FormBuilder,
-    private _toastService: ToastService,
     private router: Router,
-    private menu: MenuController
+    private menu: MenuController,
+    private _toastService: ToastService,
+    private _authService: AuthService,
+    private _storageService: StorageService
+
   ) {
     this.menu.enable(false)
 
@@ -39,12 +44,33 @@ export class LoginPage implements OnInit {
       this._toastService.simpleToast("Something are wrong!", "danger", "top")
       return false;
     } else {
-      this.router.navigate(["movies"]);
-      console.log(this.loginForm.value)
+      let formValues = this.loginForm.value
+      this._authService.doLogin().subscribe((userData) => {
+        let result = userData.loginData.filter(user => user.username == formValues.username && user.password == formValues.password);
+        if (result.length != []) {
+          this.router.navigate(["movies"]);
+          this._storageService.setValue('userData', JSON.stringify(result[0]));
+          this.cinemaImage = result[0].companyImage;
+
+        } else {
+          this._toastService.simpleToast("Invalid credentials", "danger", "top");
+        }
+      })
     }
   }
 
-
+  inputChange(e) {
+    let formValues = this.loginForm.value
+    this._authService.doLogin().subscribe((userData) => {
+      let result = userData.loginData.filter(user => user.username == formValues.username);
+      if (result.length != []) {
+        this._storageService.setValue('userData', JSON.stringify(result[0]));
+        this.cinemaImage = result[0].companyImage;
+      } else {
+        this.cinemaImage = "assets/images/noImage.png";
+      }
+    })
+  }
 
 
 }

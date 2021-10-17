@@ -14,9 +14,10 @@
         [ngClass]="submitted && errorCtr.movieName.errors?.required ? 'formError' : ''">
         <ion-input placeholder="Movie name" formControlName="movieName"></ion-input>
       </ion-item>
-      <ion-item class="ionItemInput" lines="none"
+      <ion-item lines="none" class="ionItemInput" mode="ios"
         [ngClass]="submitted && errorCtr.movieDate.errors?.required ? 'formError' : ''">
-        <ion-input placeholder="Movie date" formControlName="movieDate"></ion-input>
+        <!-- <ion-input placeholder="Movie date" formControlName="movieDate"></ion-input> -->
+        <ion-datetime display-format="DD/MM/YYYY" formControlName="movieDate"></ion-datetime>
       </ion-item>
       <ion-item class="ionItemTextArea" lines="none"
         [ngClass]="submitted && errorCtr.movieDescription.errors?.required ? 'formError' : ''">

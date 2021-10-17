@@ -9,7 +9,7 @@ const routes: Routes = [
     component: MoviesPage
   },
   {
-    path: 'movie-detail',
+    path: 'movie-detail/:id',
     loadChildren: () => import('../movie-detail/movie-detail.module').then(m => m.MovieDetailPageModule)
   },
   {

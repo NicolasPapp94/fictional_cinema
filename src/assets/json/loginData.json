@@ -1,0 +1,36 @@
+{
+  "loginData": [
+    {
+      "id": 1,
+      "companyName": "Hoyts Cinema",
+      "companyAdress": "Av. Test 1234",
+      "username": "Hoyts",
+      "password": 1234,
+      "companyImage": "assets/images/hoytsImage.jpg"
+    },
+    {
+      "id": 2,
+      "companyName": "Cinemark Cinema",
+      "companyAdress": "Av. Development 777",
+      "username": "Cinemark",
+      "password": 9988,
+      "companyImage": "assets/images/cinemarkImage.png"
+    },
+    {
+      "id": 3,
+      "companyName": "Big Movies Cinema",
+      "companyAdress": "Av. New World 098",
+      "username": "BigMovies",
+      "password": 9988,
+      "companyImage": "assets/images/bigMoviesImage.png"
+    },
+    {
+      "id": 4,
+      "companyName": "Cinepolis Cinema",
+      "companyAdress": "Av. de los Argentinos 768",
+      "username": "Cinepolis",
+      "password": 9988,
+      "companyImage": "assets/images/cinepolis.jpg"
+    }
+  ]
+}
