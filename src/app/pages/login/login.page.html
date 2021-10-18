@@ -11,8 +11,8 @@
       </ion-item>
       <ion-item class="ionItemInput" lines="none"
         [ngClass]="submitted && errorCtr.password.errors?.required ? 'formError' : ''">
-        <ion-input placeholder="Password" formControlName="password"></ion-input>
-        <ion-icon name="eye-outline"></ion-icon>
+        <ion-input placeholder="Password" formControlName="password" [type]="passwordType"></ion-input>
+        <ion-icon [name]="eyeIcon" (click)="toggleView()"></ion-icon>
       </ion-item>
       <ion-button type="submit" class="loginButton" shape="round" color="favorite" fill="solid"
         [disabled]="!loginForm.valid">Login</ion-button>

@@ -14,6 +14,8 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   cinemaImage = "assets/images/noImage.png";
+  passwordType = "password";
+  eyeIcon = "eye-off";
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
@@ -70,6 +72,11 @@ export class LoginPage implements OnInit {
         this.cinemaImage = "assets/images/noImage.png";
       }
     })
+  }
+
+  toggleView() {
+    this.passwordType = this.passwordType === "text" ? "password" : "text";
+    this.eyeIcon = this.eyeIcon === "eye-off" ? "eye" : "eye-off"
   }
 
 

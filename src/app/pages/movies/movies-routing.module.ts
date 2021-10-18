@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'movie-form',
     loadChildren: () => import('../movie-form/movie-form.module').then(m => m.MovieFormPageModule)
+  },
+  {
+    path: 'movie-form/:id',
+    loadChildren: () => import('../movie-form/movie-form.module').then(m => m.MovieFormPageModule)
   }
 ];
 

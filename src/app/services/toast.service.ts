@@ -12,10 +12,10 @@ export class ToastService {
   async simpleToast(message, color, position) {
     const toast = await this.toastCtrl.create({
       message,
-      duration: 3000,
+      duration: 2000,
       color,
       position,
-      cssClass: "customToast"
+      cssClass: "customToast",
     });
     toast.present();
   }

@@ -11,28 +11,33 @@
 </ion-header>
 
 <ion-content>
-  <ion-item-sliding class="ionItemMovie" *ngFor="let movie of arrayMovies">
-    <ion-item class="movieContainer">
-      <div class="movieImageContainer">
-        <!-- <img src="assets/images/avengersMovie.jpg" class="movieImage"><img> -->
-      </div>
-      <div class="movieDescription">
-        <h5>{{ movie.movieName }}</h5>
-        <p>{{ movie.movieDescription }}</p>
-        <div class="movieRate">
-          <span class="rateSpan">Rate</span>
-          <div class="stars">
-            <ion-icon [name]="star" class="starIcon" *ngFor="let star of movie.movieStars"></ion-icon>
+  <div *ngIf="arrayMovies">
+    <ion-item-sliding class="ionItemMovie" *ngFor="let movie of arrayMovies">
+      <ion-item class="movieContainer" (click)="showDetail(movie.id)">
+        <div class="movieImageContainer">
+          <!-- <img src="assets/images/avengersMovie.jpg" class="movieImage"><img> -->
+        </div>
+        <div class="movieDescription">
+          <h5>{{ movie.movieName }}</h5>
+          <p>{{ movie.movieDescription }}</p>
+          <div class="movieRate">
+            <span class="rateSpan">Rate</span>
+            <div class="stars">
+              <ion-icon [name]="star" class="starIcon" *ngFor="let star of movie.movieStars"></ion-icon>
+            </div>
           </div>
         </div>
-      </div>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option color="tertiary" expandable (click)="showDetail(movie.id)">
-        Edit
-      </ion-item-option>
-    </ion-item-options>
-  </ion-item-sliding>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="tertiary" expandable (click)="editMovie(movie.id)">
+          Edit
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </div>
+  <div *ngIf="!arrayMovies || arrayMovies.length == ''">
+    <h3 class="noMoviesLabel">No available movies</h3>
+  </div>
   <ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="addMovie()">
     <ion-fab-button color="dark">
       <ion-icon name="add"></ion-icon>

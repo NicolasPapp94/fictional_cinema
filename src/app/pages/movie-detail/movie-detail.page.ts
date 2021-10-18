@@ -37,7 +37,7 @@ export class MovieDetailPage implements OnInit {
   }
 
   editMovie() {
-
+    this.router.navigate(["movies/movie-form/" + this.movieID]);
   }
 
   async confirmationMessage() {
