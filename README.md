@@ -1,6 +1,6 @@
-# Prex's challange: Fictional Cinema
+# Prex's challenge: Fictional Cinema
 
-Hola, soy Nico y esta es mi resolucion del Challange de Prex. Debajo de este texto dejo las instrucciones para poder ejecutar la aplicacion, cabe destacar que el desarrollo fue realizado unicamente mediante Ionic Serve y no corri la misma en un dispositivo movil (Entiendo que no era necesario). El desafio me gusto mucho, le meti muchas ganas y espero que eso se haya note en lo que veas. Saludos!
+Hola, soy Nico y esta es mi resolucion del Challenge de Prex. Debajo de este texto dejo las instrucciones para poder ejecutar la aplicacion, cabe destacar que el desarrollo fue realizado unicamente mediante Ionic Serve y no corri la misma en un dispositivo movil (Entiendo que no era necesario). El desafio me gusto mucho, le meti muchas ganas y espero que eso se haya note en lo que veas. Saludos!
 
 ## Notas del Desarrollador.
 
