@@ -1,12 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="headerIcon" mode="ios" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="formContainer">
     <div class="userLoginContainer">
-      <ion-avatar>
-        <img [src]="cinemaImage">
-      </ion-avatar>
+      <div class="userImageContainer">
+        <ion-avatar>
+          <img [src]="userImage" (click)="uploadImage()">
+        </ion-avatar>
+        <span class="spanUpload">Upload your image</span>
+      </div>
       <ion-item class="ionItemInput" lines="none"
         [ngClass]="submitted && errorCtr.username.errors?.required ? 'formError' : ''">
-        <ion-input placeholder="Username" formControlName="username" (ionBlur)="inputChange(event)"></ion-input>
+        <ion-input placeholder="Username" formControlName="username"></ion-input>
         <ion-icon></ion-icon>
       </ion-item>
       <ion-item class="ionItemInput" lines="none"
@@ -15,9 +26,7 @@
         <ion-icon [name]="eyeIcon" (click)="toggleView()"></ion-icon>
       </ion-item>
       <ion-button type="submit" class="loginButton" shape="round" color="favorite" fill="solid"
-        [disabled]="!loginForm.valid">Login</ion-button>
-      <span class="labelCreateAccount" (click)="registerUser()">Create account</span>
-      <span class="labelForgotPassword">Forgot password?</span>
+        [disabled]="!loginForm.valid">Create</ion-button>
     </div>
   </form>
 </ion-content>

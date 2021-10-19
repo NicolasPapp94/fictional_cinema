@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MovieService } from 'src/app/services/movie.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { v4 as uuidv4 } from 'uuid'
@@ -32,11 +31,12 @@ export class MovieFormPage implements OnInit {
 
     this.activatedRoute.paramMap.subscribe((data) => {
       this.movieID = data.get('id');
+
       if (this.movieID != null && this.movieID != "") {
         this.headerName = "Edit Movie";
         this._storageService.getValue('movies').then((moviesInfo) => {
           let arrayMovies = JSON.parse(moviesInfo.value);
-          this.movieItem = arrayMovies.filter(movie => movie.id == data.get('id'))[0];
+          this.movieItem = arrayMovies.filter(movie => movie.movieID == data.get('id'))[0];
           this.initForm(this.movieItem.movieName, this.movieItem.movieData, this.movieItem.movieDescription, this.movieItem.movieRating)
         })
       }
@@ -86,7 +86,7 @@ export class MovieFormPage implements OnInit {
   }
 
   addNewMovie(localStorageInfo) {
-    this.movieForm.value['id'] = uuidv4();
+    this.movieForm.value['movieID'] = uuidv4();
     this.movieForm.value['companyID'] = this.companyID;
     if (localStorageInfo == null) {
       let temporalObject = [];
@@ -102,13 +102,14 @@ export class MovieFormPage implements OnInit {
     let temporalID;
     let editIndex;
     localStorageInfo.forEach((element, index) => {
-      if (element.id == this.movieID) {
+      if (element.movieID == this.movieID) {
         temporalID = element.id;
         editIndex = index;
       }
     });
-    this.movieForm.value["id"] = temporalID;
-    localStorageInfo[editIndex] = this.movieForm.value
+    this.movieForm.value["movieID"] = this.movieID;
+    this.movieForm.value["companyID"] = this.companyID;
+    localStorageInfo[editIndex] = this.movieForm.value;
     this._storageService.setValue('movies', JSON.stringify(localStorageInfo));
   }
 }

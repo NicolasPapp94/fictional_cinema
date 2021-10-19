@@ -24,7 +24,7 @@ export class MoviesPage implements OnInit {
 
     this._storageService.getValue('movies').then((moviesInfo) => {
       this.arrayMovies = JSON.parse(moviesInfo.value);
-      this.arrayMovies = this.arrayMovies.filter(movie => movie.companyID == this.companyID);
+      this.arrayMovies = this.arrayMovies?.filter(movie => movie.companyID == this.companyID);
       this.arrayMovies?.forEach(element => {
         let movieStars = ["0", "0", "0", "0", "0"];
         movieStars.fill('star', 0, element['movieRating']);

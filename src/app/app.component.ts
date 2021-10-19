@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 import { StorageService } from './services/storage.service';
 @Component({
   selector: 'app-root',
@@ -10,18 +11,18 @@ export class AppComponent {
   cinemaAdress = "NONE";
   cinemaImage = "assets/images/noImage.png";
   public appPages = [
-    { title: 'Movies', url: 'movies', icon: 'videocam' },
-    { title: 'Add Movie', url: 'movies/movie-form', icon: 'add' },
     { title: 'Logout', url: 'login', icon: 'log-out' },
   ];
-  constructor(private _storageService: StorageService) { }
+  constructor(private _storageService: StorageService,
+    private _authService: AuthService) { }
 
   ngOnInit() {
-    this._storageService.getValue('userData').then((userData) => {
-      let parsedData = JSON.parse(userData.value);
-      this.cinemaName = parsedData.companyName;
-      this.cinemaImage = parsedData.companyImage;
-      this.cinemaAdress = parsedData.companyAdress
+    this._authService.getInitializedSessionEvent().subscribe(() => {
+      this._storageService.getValue('userData').then((userData) => {
+        let parsedData = JSON.parse(userData.value);
+        this.cinemaName = parsedData?.username;
+        this.cinemaImage = parsedData?.image;
+      })
     })
   }
 }

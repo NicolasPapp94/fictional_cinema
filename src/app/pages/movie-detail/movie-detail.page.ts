@@ -25,7 +25,7 @@ export class MovieDetailPage implements OnInit {
       this.movieID = data.get('id');
       this._storageService.getValue('movies').then((moviesInfo) => {
         let arrayMovies = JSON.parse(moviesInfo.value);
-        this.movieItem = arrayMovies.filter(movie => movie.id == data.get('id'))[0];
+        this.movieItem = arrayMovies.filter(movie => movie.movieID == data.get('id'))[0];
         this.movieStars.fill('star', 0, this.movieItem['movieRating']);
         this.movieStars.fill('star-outline', this.movieItem['movieRating'], 5);
       })

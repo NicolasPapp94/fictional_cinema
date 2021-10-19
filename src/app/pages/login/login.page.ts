@@ -25,8 +25,12 @@ export class LoginPage implements OnInit {
     private _storageService: StorageService
 
   ) {
-    this.menu.enable(false)
+    this.menu.enable(false);
+  }
 
+  ionViewWillEnter() {
+    this.clearForm();
+    this.cinemaImage = "assets/images/noImage.png";
   }
 
   ngOnInit() {
@@ -47,29 +51,39 @@ export class LoginPage implements OnInit {
       return false;
     } else {
       let formValues = this.loginForm.value
-      this._authService.doLogin().subscribe((userData) => {
-        let result = userData.loginData.filter(user => user.username == formValues.username && user.password == formValues.password);
-        if (result.length != []) {
-          this.router.navigate(["movies"]);
-          this._storageService.setValue('userData', JSON.stringify(result[0]));
-          this.cinemaImage = result[0].companyImage;
-
+      this._storageService.getValue('users').then((usersData) => {
+        let users = JSON.parse(usersData.value);
+        if (users) {
+          let result = users.filter(user => user.username == formValues.username && user.password == formValues.password);
+          if (result.length != []) {
+            this._storageService.setValue('userData', JSON.stringify(result[0])).then(() => {
+              this.clearForm();
+              this._authService.setInitializedSession();
+              this.router.navigate(["movies"]);
+            });
+          } else {
+            this._toastService.simpleToast("Invalid credentials", "danger", "top");
+          }
         } else {
           this._toastService.simpleToast("Invalid credentials", "danger", "top");
         }
       })
+
     }
   }
 
   inputChange(e) {
-    let formValues = this.loginForm.value
-    this._authService.doLogin().subscribe((userData) => {
-      let result = userData.loginData.filter(user => user.username == formValues.username);
-      if (result.length != []) {
-        this._storageService.setValue('userData', JSON.stringify(result[0]));
-        this.cinemaImage = result[0].companyImage;
-      } else {
-        this.cinemaImage = "assets/images/noImage.png";
+    let formValues = this.loginForm.value;
+    this._storageService.getValue('users').then((usersData) => {
+      let users = JSON.parse(usersData.value);
+      if (users) {
+        let result = users.filter(user => user.username == formValues.username);
+        if (result.length != []) {
+          this._storageService.setValue('userData', JSON.stringify(result[0]));
+          this.cinemaImage = result[0].image;
+        } else {
+          this.cinemaImage = "assets/images/noImage.png";
+        }
       }
     })
   }
@@ -80,4 +94,12 @@ export class LoginPage implements OnInit {
   }
 
 
+  registerUser() {
+    this.router.navigate(['new-account']);
+  }
+
+  clearForm() {
+    this.submitted = false;
+    this.loginForm.reset();
+  }
 }

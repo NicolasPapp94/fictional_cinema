@@ -14,7 +14,7 @@ export class MovieService {
   deleteMovie(movieID) {
     this._storageService.getValue('movies').then((moviesInfo) => {
       let arrayMovies = JSON.parse(moviesInfo.value);
-      let modifiedArray = arrayMovies.filter(movie => movie.id != movieID);
+      let modifiedArray = arrayMovies.filter(movie => movie.movieID != movieID);
       this._storageService.setValue('movies', JSON.stringify(modifiedArray));
     })
   }
